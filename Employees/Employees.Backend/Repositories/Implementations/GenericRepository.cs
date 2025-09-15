@@ -7,12 +7,12 @@ using Orders.Shared.Entites.Responses;
 
 namespace Orders.backend.Repositories.Implementations;
 
-public class GeneryRepository<T> : IGenericRepository<T> where T : class
+public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
     private readonly DataContext _context;
     private readonly DbSet<T> _entity;
 
-    public GeneryRepository(DataContext context)
+    public GenericRepository(DataContext context)
     {
         _context = context;
         _entity = _context.Set<T>();

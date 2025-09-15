@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Orders.backend.UnitsOfWork.Interfaces;
-using Orders.Backend.Repositories.Interfaces;
 using Orders.Backend.UnitsOfWork.Interfaces;
 
 namespace Orders.backend.Controllers;

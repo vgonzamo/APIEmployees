@@ -1,4 +1,5 @@
-﻿using Orders.Shared.Responses;
+﻿using Orders.Shared.Entites.Responses;
+
 
 namespace Orders.Backend.UnitsOfWork.Interfaces;
 
