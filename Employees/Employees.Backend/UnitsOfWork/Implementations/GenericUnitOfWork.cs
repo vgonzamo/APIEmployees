@@ -1,6 +1,7 @@
 ﻿
 using Orders.Backend.Repositories.Interfaces;
 using Orders.Backend.UnitsOfWork.Interfaces;
+using Orders.Shared.Entites;
 using Orders.Shared.Entites.Responses;
 
 namespace Orders.backend.UnitsOfWork.Implementations;
@@ -21,8 +22,14 @@ public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
     public virtual async Task<ActionResponse<T>> GetAsync(int id) =>
     await _repository.GetAsync(id);
 
+
     public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync() =>
     await _repository.GetAsync();
+
+    public Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text)
+    {
+        throw new NotImplementedException();
+    }
 
     public virtual async Task<ActionResponse<T>> UpdateAsync(T entity) =>
     await _repository.UpdateAsync(entity);

@@ -23,7 +23,7 @@ public class GenericController<T>: Controller where T: class
         return BadRequest(action.Message);
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     public virtual async Task<IActionResult> GetAsync(int id)
     {
         var action = await _unitOfWork.GetAsync(id);
@@ -56,7 +56,7 @@ public class GenericController<T>: Controller where T: class
         return BadRequest(action.Message);
     }
 
-    [HttpDelete("{Id}")]
+    [HttpDelete("{id}")]
     public virtual async Task<IActionResult> DeleteAsync(int id)
     {
         var action = await _unitOfWork.DeleteAsync(id);

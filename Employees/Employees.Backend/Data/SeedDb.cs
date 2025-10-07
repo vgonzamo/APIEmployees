@@ -24,8 +24,8 @@ public class SeedDb
     {
         if (!_context.employees.Any())
 
-            _context.employees.AddRange(new Employee { FristName = "Juliana", LastName = "Castaño", IsActive = true, HireDate = new DateTime(2023, 10, 12), Salary = 1_250_000 },
-                                        new Employee { FristName = "Juan", LastName = "Martínez", IsActive = true, HireDate = new DateTime(2022, 8, 3), Salary = 1_400_000 },
+            _context.employees.AddRange(new Employee { FristName = "Juliana", LastName = "Castaño", IsActive = true, HireDate = DateTime.Now, Salary = 1_250_000 },
+                                        new Employee { FristName = "Juan", LastName = "Martínez", IsActive = true, HireDate = DateTime.Now, Salary = 1_400_000 },
                                         new Employee { FristName = "Justina", LastName = "Gómez", IsActive = false, HireDate = new DateTime(2021, 2, 17), Salary = 1_180_000 },
                                         new Employee { FristName = "Julián", LastName = "Salazar", IsActive = true, HireDate = new DateTime(2020, 6, 25), Salary = 1_600_000 },
                                         new Employee { FristName = "Juvenal", LastName = "Ramírez", IsActive = false, HireDate = new DateTime(2019, 9, 14), Salary = 1_300_000 },

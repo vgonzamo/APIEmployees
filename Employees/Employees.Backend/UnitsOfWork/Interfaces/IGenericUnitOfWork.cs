@@ -1,4 +1,5 @@
-﻿using Orders.Shared.Entites.Responses;
+﻿using Orders.Shared.Entites;
+using Orders.Shared.Entites.Responses;
 
 
 namespace Orders.Backend.UnitsOfWork.Interfaces;
@@ -14,4 +15,6 @@ public interface IGenericUnitOfWork<T> where T : class
     Task<ActionResponse<T>> DeleteAsync(int id);
 
     Task<ActionResponse<T>> GetAsync(int id);
+    Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text);
+   
 }
