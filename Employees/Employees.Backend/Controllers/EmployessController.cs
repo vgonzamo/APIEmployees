@@ -1,11 +1,11 @@
-﻿using DocuSign.eSign.Model;
-using Employees.Backend.UnitsOfWork.Implementations;
+﻿using Employees.Backend.UnitsOfWork.Interfaces;
+using Employees.Shared.Dtos;
+using Employeess.backend.Controllers;
+using Employeess.Backend.UnitsOfWork.Implementations;
+using Employeess.Shared.Entites;
 using Microsoft.AspNetCore.Mvc;
-using Orders.backend.Controllers;
-using Orders.Backend.UnitsOfWork.Interfaces;
-using Orders.Shared.Entites;
 
-namespace Orders.Backend.Controllers;
+namespace Employees.Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -27,4 +27,31 @@ public class EmployessController : GenericController<Employee>
 
         return NotFound();
     }
+
+    [HttpGet("paginated")]
+    public override async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+    {
+        var response = await _EmployeesUnitOfWork.GetAsync(pagination);
+        if (response.WasSuccess)
+        {
+            return Ok(response.Result);
+        }
+        return BadRequest();
+    }
+
+    [HttpGet("totalRecords")]
+    public override async Task<IActionResult> GetTotalRecordsAsync([FromQuery] PaginationDTO pagination)
+    {
+        var action = await _EmployeesUnitOfWork.GetTotalRecordsAsync(pagination);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest();
+    }
 }
+
+
+
+
+

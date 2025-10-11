@@ -1,8 +1,9 @@
-﻿using Orders.Shared.Entites;
-using Orders.Shared.Entites.Responses;
+﻿using Employees.Shared.Dtos;
+using Employees.Shared.Entites.Responses;
+using Employeess.Shared.Entites;
 
 
-namespace Orders.Backend.UnitsOfWork.Interfaces;
+namespace Employees.Backend.UnitsOfWork.Interfaces;
 
 public interface IGenericUnitOfWork<T> where T : class
 {
@@ -15,6 +16,8 @@ public interface IGenericUnitOfWork<T> where T : class
     Task<ActionResponse<T>> DeleteAsync(int id);
 
     Task<ActionResponse<T>> GetAsync(int id);
-    Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text);
-   
+
+    Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination);
+
+    Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
 }

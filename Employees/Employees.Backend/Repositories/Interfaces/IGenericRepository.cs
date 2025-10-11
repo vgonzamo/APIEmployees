@@ -1,7 +1,8 @@
-﻿using Orders.Shared.Entites.Responses;
+﻿using Employees.Shared.Dtos;
+using Employees.Shared.Entites.Responses;
 
 
-namespace Orders.Backend.Repositories.Interfaces;
+namespace Employees.Backend.Repositories.Interfaces;
 
 public interface IGenericRepository<T> where T : class
 {
@@ -14,4 +15,8 @@ public interface IGenericRepository<T> where T : class
     Task<ActionResponse<T>> DeleteAsync(int id);
 
     Task<ActionResponse<T>> UpdateAsync(T entity);
+    Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination);
+
+    Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
+
 }

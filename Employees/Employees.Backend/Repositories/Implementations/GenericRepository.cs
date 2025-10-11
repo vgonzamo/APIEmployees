@@ -1,11 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Employees.Backend.Helpers;
+using Employees.Backend.Repositories.Interfaces;
+using Employees.Shared.Dtos;
+using Employees.Shared.Entites.Responses;
+using Employeess.backend.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using Orders.backend.Data;
-using Orders.Backend.Repositories.Interfaces;
-using Orders.Shared.Entites.Responses;
 
-namespace Orders.backend.Repositories.Implementations;
+namespace Employees.backend.Repositories.Implementations;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
@@ -136,5 +136,29 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         Message = "El  registro ya existe"
     };
+
+    public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination)
+    {
+        var queryable = _entity.AsQueryable();
+
+        return new ActionResponse<IEnumerable<T>>
+        {
+            WasSuccess = true,
+            Result = await queryable
+                .Paginate(pagination)
+                .ToListAsync()
+        };
+    }
+
+    public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination)
+    {
+        var queryable = _entity.AsQueryable();
+        double count = await queryable.CountAsync();
+        return new ActionResponse<int>
+        {
+            WasSuccess = true,
+            Result = (int)count
+        };
+    }
 
 }

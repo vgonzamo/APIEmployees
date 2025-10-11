@@ -1,25 +1,34 @@
-﻿
-using Orders.backend.UnitsOfWork.Implementations;
-using Orders.Backend.Repositories.Interfaces;
-using Orders.Shared.Entites;
-using Orders.Shared.Entites.Responses;
+﻿using DocuSign.eSign.Model;
+using Employees.backend.UnitsOfWork.Implementations;
+using Employees.Backend.Repositories.Interfaces;
+using Employees.Shared.Dtos;
+using Employees.Shared.Entites.Responses;
+using Employeess.backend.Data;
+using Employeess.Backend.Repositories.Implementations;
+using Employeess.Backend.Repositories.Interfaces;
+using Employeess.Shared.Entites;
+using Microsoft.EntityFrameworkCore;
 
 
-namespace Employees.Backend.UnitsOfWork.Implementations
+namespace Employeess.Backend.UnitsOfWork.Implementations
 {
     public class EmployeesUnitOfWork : GenericUnitOfWork<Employee>, IEmployeeUnitOfWork
     {
-        private readonly IEmployeeUnitOfWork _repository;
-
-        public EmployeesUnitOfWork(IGenericRepository<Employee> repository, IEmployeeUnitOfWork employeesRepository) : base(repository)
+        private readonly IEmployeesRepository _employeesRepository;
+        public EmployeesUnitOfWork(IGenericRepository<Employee> repository, IEmployeesRepository employeesRepository) : base(repository)
         {
-            _repository = employeesRepository;
+            _employeesRepository = employeesRepository;
         }
 
-    
         public async Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text)
         {
-            return await _repository.GetAsync(text);
+            return await _employeesRepository.GetAsync(text);
         }
+
+        public override async Task<ActionResponse<IEnumerable<Employee>>> GetAsync(PaginationDTO pagination) => await _employeesRepository.GetAsync(pagination);
+
+        public override async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _employeesRepository.GetTotalRecordsAsync(pagination);
+
     }
 }
+

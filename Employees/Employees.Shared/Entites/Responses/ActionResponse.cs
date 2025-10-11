@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Orders.Shared.Entites.Responses;
+﻿namespace Employees.Shared.Entites.Responses;
 
 public class ActionResponse<T>
 {
-   
+
 
     public bool WasSuccess { get; set; }
 

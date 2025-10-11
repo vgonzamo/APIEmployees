@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Emit;
-using System.Security.Cryptography.X509Certificates;
+﻿using Employeess.Shared.Entites;
 using Microsoft.EntityFrameworkCore;
-using Orders.Shared.Entites;
 
-namespace Orders.backend.Data;
+namespace Employeess.backend.Data;
 
 public class DataContext : DbContext
 {
@@ -21,5 +18,5 @@ public class DataContext : DbContext
     }
 
 
-    
+
 }

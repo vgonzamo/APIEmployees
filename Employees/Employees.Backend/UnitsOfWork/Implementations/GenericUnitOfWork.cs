@@ -1,10 +1,10 @@
-﻿
-using Orders.Backend.Repositories.Interfaces;
-using Orders.Backend.UnitsOfWork.Interfaces;
-using Orders.Shared.Entites;
-using Orders.Shared.Entites.Responses;
+﻿using Employees.Backend.Repositories.Interfaces;
+using Employees.Backend.UnitsOfWork.Interfaces;
+using Employees.Shared.Dtos;
+using Employees.Shared.Entites.Responses;
+using Employeess.Shared.Entites;
 
-namespace Orders.backend.UnitsOfWork.Implementations;
+namespace Employees.backend.UnitsOfWork.Implementations;
 
 public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
 {
@@ -26,12 +26,14 @@ public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
     public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync() =>
     await _repository.GetAsync();
 
-    public Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text)
-    {
-        throw new NotImplementedException();
-    }
+    public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination) => await _repository.GetAsync(pagination);
+
+    public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _repository.GetTotalRecordsAsync(pagination);
+
+  
 
     public virtual async Task<ActionResponse<T>> UpdateAsync(T entity) =>
     await _repository.UpdateAsync(entity);
 
+    
 }
