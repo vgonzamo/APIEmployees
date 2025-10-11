@@ -10,7 +10,7 @@ builder.Services.AddMudServices();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri("https://localhost:7182") });
+builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri("https://localhost:7020") });
 builder.Services.AddScoped<IRepository, Repository>();
 
 
