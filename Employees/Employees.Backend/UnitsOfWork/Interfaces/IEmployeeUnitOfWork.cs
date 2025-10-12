@@ -1,13 +1,12 @@
-﻿using DocuSign.eSign.Model;
-using Employees.Shared.Dtos;
-using Employees.Shared.Entites.Responses;
-using Employeess.Shared.Entites;
+﻿using Employees.Shared.Dtos;
+using Employees.Shared.Entities;
+using Employees.Shared.Responses;
 
-
+namespace Employees.Backend.UnitsOfWork.Interfaces;
 public interface IEmployeeUnitOfWork
 {
-    Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text);
-    Task<ActionResponse<IEnumerable<Employee>>> GetAsync(PaginationDTO pagination);
+    Task<ActionResponse<IEnumerable<tblEmployees>>> GetAsync(string text);
+    Task<ActionResponse<IEnumerable<tblEmployees>>> GetAsync(PaginationDTO pagination);
     Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
 
 }

@@ -1,19 +1,17 @@
 ﻿using Employees.Backend.UnitsOfWork.Interfaces;
 using Employees.Shared.Dtos;
-using Employeess.backend.Controllers;
-using Employeess.Backend.UnitsOfWork.Implementations;
-using Employeess.Shared.Entites;
+using Employees.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Employees.Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EmployessController : GenericController<Employee>
+public class EmployeesController : GenericController<tblEmployees>
 
 {
     private readonly IEmployeeUnitOfWork _EmployeesUnitOfWork;
-    public EmployessController(IGenericUnitOfWork<Employee> baseUnit, IEmployeeUnitOfWork employeeUnit) : base(baseUnit)
+    public EmployeesController(IGenericUnitOfWork<tblEmployees> baseUnit, IEmployeeUnitOfWork employeeUnit) : base(baseUnit)
     {
         _EmployeesUnitOfWork = employeeUnit;
     }

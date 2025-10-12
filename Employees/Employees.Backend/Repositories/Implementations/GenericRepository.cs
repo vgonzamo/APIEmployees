@@ -1,8 +1,8 @@
-﻿using Employees.Backend.Helpers;
+﻿using Employees.backend.Data;
+using Employees.Backend.Helpers;
 using Employees.Backend.Repositories.Interfaces;
 using Employees.Shared.Dtos;
-using Employees.Shared.Entites.Responses;
-using Employeess.backend.Data;
+using Employees.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
 
 namespace Employees.backend.Repositories.Implementations;

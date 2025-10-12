@@ -1,8 +1,7 @@
 ﻿using Employees.Backend.Repositories.Interfaces;
 using Employees.Backend.UnitsOfWork.Interfaces;
 using Employees.Shared.Dtos;
-using Employees.Shared.Entites.Responses;
-using Employeess.Shared.Entites;
+using Employees.Shared.Responses;
 
 namespace Employees.backend.UnitsOfWork.Implementations;
 
@@ -29,8 +28,7 @@ public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
     public virtual async Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination) => await _repository.GetAsync(pagination);
 
     public virtual async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _repository.GetTotalRecordsAsync(pagination);
-
-  
+      
 
     public virtual async Task<ActionResponse<T>> UpdateAsync(T entity) =>
     await _repository.UpdateAsync(entity);

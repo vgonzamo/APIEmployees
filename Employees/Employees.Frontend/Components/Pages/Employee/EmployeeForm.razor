@@ -1,0 +1,48 @@
+﻿<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <MudTextField Label="Nombres"
+                  @bind-Value="@employee.FirstName"
+                  For="@(() => employee.FirstName)"
+                  Required="true"
+                  Class="mb-4" />
+
+    <MudTextField Label="Apellidos"
+                  @bind-Value="@employee!.LastName" 
+                  For="@(() => employee!.LastName)" 
+                  Required="true" Class="mb-4" />
+
+    <MudCheckBox T="bool" Label="Estado"
+                  @bind-Value="@employee!.IsActive"
+                  For="@(() => employee!.IsActive)"
+                  Class="mb-4" />
+
+    <MudTextField Label="Fecha de contrato"
+                  @bind-Value="@employee!.HireDate"
+                  For="@(() => employee!.HireDate)"
+                  Class="mb-4" />
+
+    <MudTextField Label="Salario"
+                  @bind-Value="@employee!.Salary" 
+                  For="@(() => employee!.Salary)"
+                  Required="true" 
+                  Class="mb-4"
+                  Pattern="^\d{1,15}(\.\d{1,2})?$" />
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        <MudHidden xs="true">
+            Cancelar
+        </MudHidden>
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        <MudHidden xs="true">
+            Guardar Cambios
+        </MudHidden>
+    </MudButton>
+</EditForm>

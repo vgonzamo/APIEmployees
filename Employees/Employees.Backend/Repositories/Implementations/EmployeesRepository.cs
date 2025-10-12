@@ -1,16 +1,16 @@
-﻿using Employees.backend.Repositories.Implementations;
+﻿using Employees.backend.Data;
+using Employees.backend.Repositories.Implementations;
 using Employees.Backend.Helpers;
+using Employees.Backend.Repositories.Interfaces;
 using Employees.Shared.Dtos;
-using Employees.Shared.Entites.Responses;
-using Employeess.backend.Data;
-using Employeess.Backend.Repositories.Interfaces;
-using Employeess.Shared.Entites;
+using Employees.Shared.Entities;
+using Employees.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Employeess.Backend.Repositories.Implementations
+namespace Employees.Backend.Repositories.Implementations
 {
-    public class EmployeesRepository : GenericRepository<Employee>, IEmployeesRepository
+    public class EmployeesRepository : GenericRepository<tblEmployees>, IEmployeesRepository
     {
 
         private readonly DataContext _context;
@@ -19,7 +19,7 @@ namespace Employeess.Backend.Repositories.Implementations
             _context = Context;
         }
 
-        public async Task<ActionResponse<IEnumerable<Employee>>> GetAsync(string text)
+        public async Task<ActionResponse<IEnumerable<tblEmployees>>> GetAsync(string text)
         {
             text = text.ToLower();
 
@@ -27,13 +27,13 @@ namespace Employeess.Backend.Repositories.Implementations
                 .Where(x => x.FirstName.ToLower().Contains(text) || x.LastName.ToLower().Contains(text))
                 .ToListAsync();
 
-            return new ActionResponse<IEnumerable<Employee>>
+            return new ActionResponse<IEnumerable<tblEmployees>>
             {
                 WasSuccess = true,
                 Result = result
             };
         }
-        public override async Task<ActionResponse<IEnumerable<Employee>>> GetAsync(PaginationDTO pagination)
+        public override async Task<ActionResponse<IEnumerable<tblEmployees>>> GetAsync(PaginationDTO pagination)
         {
             var queryable = _context.employees
 
@@ -44,7 +44,7 @@ namespace Employeess.Backend.Repositories.Implementations
                 queryable = queryable.Where(x => x.FirstName.ToLower().Contains(pagination.Filter.ToLower()) || x.LastName.ToLower().Contains(pagination.Filter.ToLower()));
             }
 
-            return new ActionResponse<IEnumerable<Employee>>
+            return new ActionResponse<IEnumerable<tblEmployees>>
             {
                 WasSuccess = true,
                 Result = await queryable

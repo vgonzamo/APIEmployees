@@ -2,7 +2,7 @@
 using Employees.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Employeess.backend.Controllers;
+namespace Employees.Backend.Controllers;
 
 public class GenericController<T>: Controller where T: class
 {

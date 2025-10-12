@@ -1,20 +1,20 @@
-﻿using Employeess.Shared.Entites;
+﻿using Employees.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Employeess.backend.Data;
+namespace Employees.backend.Data;
 
 public class DataContext : DbContext
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
-    public DbSet<Employee> employees { get; set; }
+    public DbSet<tblEmployees> employees { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Employee>().Property(static e => e.Salary).HasColumnType("decimal(18,2)");
+        modelBuilder.Entity<tblEmployees>().Property(static e => e.Salary).HasColumnType("decimal(18,2)");
     }
 
 

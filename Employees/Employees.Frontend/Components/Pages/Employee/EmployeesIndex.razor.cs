@@ -1,16 +1,16 @@
+using Employees.Frontend.Components.Pages.Shared;
 using Employees.Frontend.Repositories;
+using Employees.Shared.Entities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Graph;
 using MudBlazor;
-using System.Diagnostics.Metrics;
 using System.Net;
 
-namespace Employees.Frontend.Components.Pages;
+namespace Employees.Frontend.Components.Pages.Employee;
 
 public partial class EmployeesIndex
 {
-    private List<Employee>? Countries { get; set; }
-    private MudTable<Employee> table = new();
+    private List<tblEmployees>? Employees { get; set; }
+    private MudTable<tblEmployees> table = new();
     private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
@@ -52,7 +52,7 @@ public partial class EmployeesIndex
         loading = false;
     }
 
-    private async Task<TableData<Employee>> LoadListAsync(TableState state, CancellationToken cancellationToken)
+    private async Task<TableData<tblEmployees>> LoadListAsync(TableState state, CancellationToken cancellationToken)
     {
         int page = state.Page + 1;
         int pageSize = state.PageSize;
@@ -63,18 +63,18 @@ public partial class EmployeesIndex
             url += $"&filter={Filter}";
         }
 
-        var responseHttp = await Repository.GetAsync<List<Employee>>(url);
+        var responseHttp = await Repository.GetAsync<List<tblEmployees>>(url);
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();
             Snackbar.Add(message!, Severity.Error);
-            return new TableData<Employee> { Items = [], TotalItems = 0 };
+            return new TableData<tblEmployees> { Items = [], TotalItems = 0 };
         }
         if (responseHttp.Response == null)
         {
-            return new TableData<Employee> { Items = [], TotalItems = 0 };
+            return new TableData<tblEmployees> { Items = [], TotalItems = 0 };
         }
-        return new TableData<Employee>
+        return new TableData<tblEmployees>
         {
             Items = responseHttp.Response,
             TotalItems = totalRecords
@@ -116,7 +116,7 @@ public partial class EmployeesIndex
         }
     }
 
-    private async Task DeleteAsync(Employee Employee)
+    private async Task DeleteAsync(tblEmployees Employee)
     {
         var parameters = new DialogParameters
         {

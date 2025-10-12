@@ -1,17 +1,12 @@
 ﻿@page "/employees"
 
-<h3>Employees</h3>
-
-
-
-
 @if (loading)
 {
     <Loading Label="Cargando empleados, por favro espera..."/>
 }
 else
 {
-    <MudTable Items="@Employee"
+    <MudTable Items="@Employees"
               @ref="table"
               ServerData="LoadListAsync"
               Dense="true"

@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Components;
 
 namespace Employees.Frontend.Components.Pages.Shared
 {
-
-
-
     public partial class Loading
     {
         [Parameter] public string? Label { get; set; }

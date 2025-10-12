@@ -1,6 +1,5 @@
 ﻿using Employees.Shared.Dtos;
-using Employees.Shared.Entites.Responses;
-
+using Employees.Shared.Responses;
 
 namespace Employees.Backend.Repositories.Interfaces;
 
@@ -18,5 +17,4 @@ public interface IGenericRepository<T> where T : class
     Task<ActionResponse<IEnumerable<T>>> GetAsync(PaginationDTO pagination);
 
     Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
-
 }

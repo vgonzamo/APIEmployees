@@ -1,7 +1,5 @@
 ﻿using Employees.Shared.Dtos;
-using Employees.Shared.Entites.Responses;
-using Employeess.Shared.Entites;
-
+using Employees.Shared.Responses;
 
 namespace Employees.Backend.UnitsOfWork.Interfaces;
 

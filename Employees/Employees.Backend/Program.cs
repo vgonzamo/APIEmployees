@@ -1,12 +1,11 @@
+using Employees.backend.Data;
 using Employees.backend.Repositories.Implementations;
 using Employees.backend.UnitsOfWork.Implementations;
+using Employees.Backend.Data;
+using Employees.Backend.Repositories.Implementations;
 using Employees.Backend.Repositories.Interfaces;
+using Employees.Backend.UnitsOfWork.Implementations;
 using Employees.Backend.UnitsOfWork.Interfaces;
-using Employeess.backend.Data;
-using Employeess.Backend.Data;
-using Employeess.Backend.Repositories.Implementations;
-using Employeess.Backend.Repositories.Interfaces;
-using Employeess.Backend.UnitsOfWork.Implementations;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,11 +19,6 @@ builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWor
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IEmployeesRepository, EmployeesRepository>();
 builder.Services.AddScoped<IEmployeeUnitOfWork, EmployeesUnitOfWork>();
-builder.Services.AddScoped<IEmployeesRepository, EmployeesRepository>();
-builder.Services.AddScoped<IEmployeeUnitOfWork, EmployeesUnitOfWork>();
-
-
-
 
 var app = builder.Build();
 

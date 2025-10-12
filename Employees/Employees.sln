@@ -9,7 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Shared", "Employe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Frontend", "Employees.Frontend\Employees.Frontend.csproj", "{3B01A912-B96E-8D4D-EC94-262C057FF200}"
 	ProjectSection(ProjectDependencies) = postProject
-		{735E30D7-2A14-4B33-B95A-123C4DCBCCBB} = {735E30D7-2A14-4B33-B95A-123C4DCBCCBB}
 		{957FDC76-62DF-4D4C-A386-2794C105E989} = {957FDC76-62DF-4D4C-A386-2794C105E989}
 	EndProjectSection
 EndProject

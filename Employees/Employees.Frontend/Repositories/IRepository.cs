@@ -1,6 +1,4 @@
-﻿using Employees.Frontend.Repositories;
-
-namespace Employees.Frontend.Repositories;
+﻿namespace Employees.Frontend.Repositories;
 
 public interface IRepository
 {
