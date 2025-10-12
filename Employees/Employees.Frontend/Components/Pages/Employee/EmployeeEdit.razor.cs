@@ -40,7 +40,7 @@ public partial class EmployeeEdit
 
     private async Task EditAsync()
     {
-        var responseHttp = await Repository.PutAsync("api/Employess", employee);
+        var responseHttp = await Repository.PutAsync("api/Employees", employee);
 
         if (responseHttp.Error)
         {

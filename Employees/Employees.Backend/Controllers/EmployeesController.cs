@@ -16,7 +16,7 @@ public class EmployeesController : GenericController<tblEmployees>
         _EmployeesUnitOfWork = employeeUnit;
     }
 
-    [HttpGet("search/{text}")]
+    [HttpGet("filter/{text}")]
     public async Task<IActionResult> SearchAsync(string text)
     {
         var action = await _EmployeesUnitOfWork.GetAsync(text);
