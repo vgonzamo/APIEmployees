@@ -1,5 +1,5 @@
-﻿using Employees.backend.Data;
-using Employees.backend.Repositories.Implementations;
+﻿using Employees.Backend.Data;
+using Employees.Backend.Repositories.Implementations;
 using Employees.Backend.Helpers;
 using Employees.Backend.Repositories.Interfaces;
 using Employees.Shared.Dtos;
@@ -35,9 +35,7 @@ namespace Employees.Backend.Repositories.Implementations
         }
         public override async Task<ActionResponse<IEnumerable<tblEmployees>>> GetAsync(PaginationDTO pagination)
         {
-            var queryable = _context.employees
-
-                .AsQueryable();
+            var queryable = _context.employees.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
             {

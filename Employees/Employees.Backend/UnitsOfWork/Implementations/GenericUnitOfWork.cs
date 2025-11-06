@@ -3,7 +3,7 @@ using Employees.Backend.UnitsOfWork.Interfaces;
 using Employees.Shared.Dtos;
 using Employees.Shared.Responses;
 
-namespace Employees.backend.UnitsOfWork.Implementations;
+namespace Employees.Backend.UnitsOfWork.Implementations;
 
 public class GenericUnitOfWork<T> : IGenericUnitOfWork<T> where T : class
 {
