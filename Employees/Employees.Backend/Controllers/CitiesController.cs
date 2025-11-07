@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Employees.Backend.Controllers;
 
 [ApiController]
-
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class CitiesController : GenericController<City>
 {
