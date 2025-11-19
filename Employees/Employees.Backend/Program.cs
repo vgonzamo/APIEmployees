@@ -14,6 +14,8 @@ using System.Text.Json.Serialization;
 using Employees.Backend.Repositories.Implementations;
 using Employees.Backend.UnitsOfWork.Implementations;
 using Employees.Backend.Data;
+using Employees.Backend.Helpers;
+
 
 
 
@@ -77,6 +79,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IGenericUnitOfWork<>), typeof(GenericUnitOfWork<>));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IFileStorage, FileStorage>();
 
 
 builder.Services.AddScoped<IEmployeesRepository, EmployeesRepository>();
