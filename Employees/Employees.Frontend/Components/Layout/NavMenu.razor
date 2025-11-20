@@ -1,12 +1,12 @@
 ﻿
 <MudNavMenu>
     <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Inicio</MudNavLink>
-        <AuthorizeView Roles="Admin">
+    <AuthorizeView Roles="Admin,User">
    
         <Authorized>
-    <MudNavLink Href="employees" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">Empleados</MudNavLink>
+            <MudNavLink Href="employees" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">Empleados</MudNavLink>
   
-    <MudNavLink Href="countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">Países</MudNavLink>
+            <MudNavLink Href="countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">Países</MudNavLink>
         </Authorized>
     </AuthorizeView>
 </MudNavMenu>
